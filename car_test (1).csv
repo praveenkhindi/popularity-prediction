@@ -1,0 +1,13 @@
+import pandas as pd
+
+dataset_train = pd.read_csv('car_train.csv')
+dataset_test = pd.read_csv('car_test.csv')
+X_train = dataset_train.iloc[:,1:7].values
+y_train = dataset_train.iloc[:,7:8].values
+X_test = dataset_test.iloc[:,1:7].values
+
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
+classifier.fit(X_train, y_train)
+
+y_pred = classifier.predict(X_test)
